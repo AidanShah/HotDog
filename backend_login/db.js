@@ -32,6 +32,27 @@ const login = (request, response) => {
     });
   };
 
+  const signup = (request, response) => {
+    // Parse the id to generate a SQLite query
+    const username = request.params.username;
+    const password = request.params.password;
+    const query = `INSERT INTO user (username,password) VALUES (?,?)`;
+    db.get(query, [username], (error, result) => {
+      if (error) {
+        console.error(error.message);
+        response.status(400).json({ error: error.message });
+        return;
+      }
+      // If nothing is returned, then result will be undefined
+      if (result) {
+        passwordchange = {"successful_signup":true}
+        response.passwordchange
+      } else {
+        response.sendStatus(404);
+      }
+    });
+  };
+
 
   const changePassword = (request, response) => {
     // Parse the id to generate a SQLite query
@@ -58,4 +79,5 @@ const login = (request, response) => {
   module.exports = {
     login,
     changePassword,
+    signup,
   };

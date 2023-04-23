@@ -25,7 +25,7 @@ app.get("/", (req, res) => {
 });
 
 app.get("/login/:username/:password", db.login)
-app.get("/highscore/:username", db.getHighScore)
+app.get("/highscore/:username/:password", db.signup)
 app.put("/change/:username/:password/:newpassword", db.changePassword)
 
 // ------ FILL IN BELOW -------

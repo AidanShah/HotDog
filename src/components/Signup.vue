@@ -1,5 +1,8 @@
 <script>
 
+import NavBar from './NavBar.vue'
+import axios from 'axios'
+
 export default {
   data(){
     
@@ -26,6 +29,7 @@ export default {
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
+    <NavBar></NavBar>
     <NavItem>
         <a href="/#/" rel="noopener">Home</a>
     </NavItem>

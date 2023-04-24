@@ -11,7 +11,7 @@ export default {
 
       //TODO: make it go to signup page
     signUpButton(){
-
+      window.location.replace("./signup")
     }
 
     },
@@ -19,6 +19,7 @@ export default {
     props: {
         
     },
+
     components: { NavBar },
 
 }
@@ -34,6 +35,7 @@ export default {
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
+    <NavBar></NavBar>
     <div class="container">
       <form>
         <h2>Login</h2>

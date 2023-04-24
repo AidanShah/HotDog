@@ -1,13 +1,13 @@
 <script>
 import NavBar from './NavBar.vue';
-import NavBar from './NavBar.vue'
+import axios from 'axios'
 
 export default {
   data(){
     
   }, 
   methods: {
-        
+
     },
 
     props: {

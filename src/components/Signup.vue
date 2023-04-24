@@ -1,18 +1,10 @@
 <script>
-import NavBar from './NavBar.vue';
-import axios from 'axios'
-
 
 export default {
   data(){
     
   }, 
   methods: {
-
-      //TODO: make it go to signup page
-    signUpButton(){
-
-    }
 
     },
 
@@ -34,6 +26,9 @@ export default {
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
+    <NavItem>
+        <a href="/#/" rel="noopener">Home</a>
+    </NavItem>
     <div class="container">
       <form>
         <h2>Login</h2>
@@ -41,12 +36,10 @@ export default {
         <input type="email" id="email" name="email" required>
         <label for="password">Password</label>
         <input type="password" id="password" name="password" required>
-        <button type="submit">Login</button>
+        <button type="submit">Sign up</button>
         <div class="error-message"></div>
 
       </form>
-
-      <button type="signup" @click="signUpButton">Sign Up</button>
     </div>
 
   

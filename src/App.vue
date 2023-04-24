@@ -53,9 +53,9 @@ export default {
 <template>
   <!-- 4. change Home to be a dynamic component, and add :is="currentPath" as a directive -->
   <component :is="currentPath" @change-data="someEvent" :hotdog="hotdog" />
-  <div class="center">
+  <!--<div class="center">
   You've dressed the dog {{ numDresses }} times!
-  </div>
+  </div>-->
 </template>
 
 <style scoped>

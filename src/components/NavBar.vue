@@ -19,7 +19,7 @@ export default {
                 <a href="/#/" rel="noopener">Home</a>
             </NavItem>
             
-            <NavItem>
+            <!--<NavItem>
                 <a href="/#/about" rel="noopener">About</a>
             </NavItem>
             
@@ -29,7 +29,7 @@ export default {
             
             <NavItem>
                 <a href="/#/statistics" rel="noopener">Statistics</a>
-            </NavItem>
+            </NavItem>-->
 
         </main>
         <div class="end">

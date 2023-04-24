@@ -10,7 +10,7 @@ const login = (request, response) => {
     // Parse the id to generate a SQLite query
     const username = request.params.username;
     const password = request.params.password;
-    const query = `SELECT * FROM user WHERE username = ?`;
+    const query = `SELECT * FROM hotdog WHERE username = ?`;
     db.get(query, [username], (error, result) => {
       if (error) {
         console.error(error.message);
@@ -36,8 +36,9 @@ const login = (request, response) => {
     // Parse the id to generate a SQLite query
     const username = request.params.username;
     const password = request.params.password;
-    const query = `INSERT INTO user (username,password) VALUES (?,?)`;
-    db.get(query, [username], (error, result) => {
+    const query1 = `SELECT * FROM hotdog WHERE username = ?`;
+    const query2 = `INSERT INTO hotdog (username,password) VALUES (?,?)`;
+    db.get(query1, [username], (error, result) => {
       if (error) {
         console.error(error.message);
         response.status(400).json({ error: error.message });
@@ -48,7 +49,21 @@ const login = (request, response) => {
         passwordchange = {"successful_signup":true}
         response.passwordchange
       } else {
-        response.sendStatus(404);
+        db.get(query2, [username], (error, result) => {
+          if (error) {
+            console.error(error.message);
+            response.status(400).json({ error: error.message });
+            return;
+          }
+          // If nothing is returned, then result will be undefined
+          if (result) {
+            passwordchange = {"successful_signup":true}
+            response.passwordchange
+          } else {
+            response.sendStatus(404);
+          }
+        });
+
       }
     });
   };
@@ -59,7 +74,7 @@ const login = (request, response) => {
     const username = request.params.username;
     const password = request.params.password;
     const newpassword = request.params.newpassword;
-    const query = `UPDATE user SET password = ? WHERE username = ? and password = ?`;
+    const query = `UPDATE hotdog SET password = ? WHERE username = ? and password = ?`;
     db.get(query, [newpassword, username, password], (error, result) => {
       if (error) {
         console.error(error.message);

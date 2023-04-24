@@ -21,11 +21,11 @@ app.use((req, res, next) => {
 });
 
 app.get("/", (req, res) => {
-  res.json({ info: "Demo app for sqlite3" });
+  res.json({ info: "Its Login Time BABYYYYYY" });
 });
 
 app.get("/login/:username/:password", db.login)
-app.get("/highscore/:username/:password", db.signup)
+app.post("/signup/:username/:password", db.signup)
 app.put("/change/:username/:password/:newpassword", db.changePassword)
 
 // ------ FILL IN BELOW -------

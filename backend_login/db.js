@@ -19,15 +19,18 @@ const login = (request, response) => {
       }
       // If nothing is returned, then result will be undefined
       if (result) {
-        if(json(result)['password']= password){
+        if(result['password']== password){
+          console.log(result['password'])
             passwordcheck = {"correct_password":true}
-            response.passwordcheck
+            response.send(passwordcheck)
         }
         else{
             passwordcheck = {"correct_password":false}
+            response.send(passwordcheck)
         }
       } else {
-        response.sendStatus(404);
+        test = {"login":"failed"}
+        response.send(test)
       }
     });
   };
@@ -46,22 +49,18 @@ const login = (request, response) => {
       }
       // If nothing is returned, then result will be undefined
       if (result) {
-        passwordchange = {"successful_signup":true}
-        response.passwordchange
+        passwordchange = {"Current member":true}
+        response.send(passwordchange)
       } else {
-        db.get(query2, [username], (error, result) => {
+        db.get(query2, [username,password], (error, result) => {
           if (error) {
             console.error(error.message);
             response.status(400).json({ error: error.message });
             return;
           }
           // If nothing is returned, then result will be undefined
-          if (result) {
-            passwordchange = {"successful_signup":true}
-            response.passwordchange
-          } else {
-            response.sendStatus(404);
-          }
+          passwordchange = {"successful_signup":true, "username":username, "password":password}
+          response.send(passwordchange)
         });
 
       }
@@ -82,12 +81,8 @@ const login = (request, response) => {
         return;
       }
       // If nothing is returned, then result will be undefined
-      if (result) {
         passwordchange = {"successful_change":true}
-        response.passwordchange
-      } else {
-        response.sendStatus(404);
-      }
+        response.send(passwordchange)
     });
   };
 

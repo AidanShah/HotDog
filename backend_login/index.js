@@ -27,6 +27,7 @@ app.get("/", (req, res) => {
 app.get("/login/:username/:password", db.login)
 app.post("/signup/:username/:password", db.signup)
 app.put("/change/:username/:password/:newpassword", db.changePassword)
+app.post("/home/:username/:newTokens", db.changeTokens)
 
 // ------ FILL IN BELOW -------
 // Write endpoints that allow a client to:

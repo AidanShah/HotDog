@@ -35,11 +35,13 @@ export default {
                 }
             ];
             const res = otherDogs.find(h => h.hotdog == this.hotdog);
+            
             console.log(res);
         return {
             hotdog: this.hotdog,
             src: res.src,
             otherDogs: otherDogs,
+            Tokens: 0
         }
     },
     emits: ['changeData'],
@@ -55,6 +57,9 @@ export default {
                console.log(response.data); // do you want to do something else here? 
            })
 
+        },
+        addTokens(){
+            this.Tokens += 5
         }
     },
 
@@ -77,8 +82,8 @@ export default {
 
             <!-- add a button that will call fetchDogs-->
             <button v-on:click="fetchDogs">Fetch Dogs</button>
-
-
+            <button v-on:click="addTokens">Add Tokens</button>
+            <p>Tokens: {{ Tokens }}</p>
         </div>
     </body>
 </template>

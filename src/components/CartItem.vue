@@ -12,8 +12,9 @@ export default {
         <h2>Name: {{ itemName }}</h2>
         <h2>Price: ${{ price }}</h2>
         <div class = "description"> Description: {{ desc }}</div>
-        <button @click="addToCart()">Add to cart</button>
+        <button type="cartitem" @click="addToCart()">Add to cart</button>
     </div>
+
 </template>
   
 <style scoped>
@@ -29,8 +30,32 @@ export default {
     padding-right: 5vh;
 }
 
+
+button[type="cartitem"]:hover {
+  display: block;
+  width: 80%;
+  background-color: gray;
+  color: #ffffff;
+  padding: 10px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+button[type="cartitem"] {
+  display: block;
+  width: 80%;
+  background-color: darkblue;
+  color: #ffffff;
+  padding: 10px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
 .description {
-    font-size: 20px;
   color: rgba(0, 0, 255, 0.493);
 }
 

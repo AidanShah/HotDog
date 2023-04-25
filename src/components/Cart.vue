@@ -47,7 +47,12 @@ export default {
                 this.cart[itemName] = { count: 0 }
             }
             this.total += Number(price);
-        }
+        },
+
+        clearCartItem(){
+            this.total = 0;
+            this.cart = {};
+        },
     }
 }
 </script>
@@ -75,6 +80,10 @@ export default {
         @add-to-cart="(itemName, price) => addToCart(itemName, price)"></CartItem>
     <CartItem itemName='Eggdog' desc="An eggdog... I don't know why" price="10.50" url="https://i.ibb.co/1rCqC2S/Eggdog.jpg"
         @add-to-cart="(itemName, price) => addToCart(itemName, price)"></CartItem>
+
+    <br>
+    <button type="clearitem" @click=" clearCartItem() ">Clear Item</button>
+
 </template>
 
 <style scoped>
@@ -84,6 +93,30 @@ export default {
   padding-top: 10px;
 }
 
+button[type="clearitem"] {
+  display: block;
+  width: 80%;
+  background-color: pink;
+  color: black;
+  padding: 10px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+
+button[type="clearitem"]:hover {
+  display: block;
+  width: 80%;
+  background-color: rgba(231, 34, 67, 0.695);
+  color: black;
+  padding: 10px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 16px;
+}
 
 
 </style>

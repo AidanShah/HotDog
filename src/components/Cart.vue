@@ -1,12 +1,14 @@
 <script>
 import NavBar from './NavBar.vue'
 import CartItem from './CartItem.vue'
+import Home from './Home.vue'
 export default {
     components: { NavBar, CartItem },
     data() {
         return {
             cart: {},
             total: 0,
+            Tokens: Home.Tokens,
             // props 
             itemList: [
             {
@@ -54,6 +56,8 @@ export default {
     <NavBar></NavBar>
     <p>Cart: {{ cart }}</p>
     <p> Total Price: ${{ total }}</p>
+    <p>Tokens: {{ Tokens }}</p>
+
     <!-- We can simplify the below like this: 
     <CartItem v-for="item in itemList" 
     :itemName="item.itemName" :desc="item.desc" :price="item.price" :url="item.url"

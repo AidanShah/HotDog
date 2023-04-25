@@ -6,6 +6,7 @@ import Testimonials from './components/Testimonials.vue'
 import About from './components/About.vue'
 import Cart from './components/Cart.vue'
 import Login from './components/Login.vue'
+import Signup from './components/Signup.vue'
 
 // hi y'all, going to number the changes so it's clear to you. 
 
@@ -17,6 +18,7 @@ const routes = {
   '/about': About, 
   '/cart': Cart,
   '/login': Login,
+  '/signup': Signup,
 }
 
 export default {

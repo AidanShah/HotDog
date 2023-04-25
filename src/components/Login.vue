@@ -1,6 +1,7 @@
 <script>
 import NavBar from './NavBar.vue';
 import axios from 'axios'
+import Home from './Home.vue'
 
 
 export default {
@@ -9,9 +10,9 @@ export default {
   }, 
   methods: {
 
-      //TODO: make it go to signup page
+  
     signUpButton(){
-      window.location.replace("./signup")
+      window.location.replace("#/signup")
     }
 
     },

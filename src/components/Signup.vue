@@ -25,17 +25,15 @@ export default {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Page</title>
+    <title>Signup Page</title>
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
     <NavBar></NavBar>
-    <NavItem>
-        <a href="/#/" rel="noopener">Home</a>
-    </NavItem>
+
     <div class="container">
       <form>
-        <h2>Login</h2>
+        <h2>Signup</h2>
         <label for="email">Email</label>
         <input type="email" id="email" name="email" required>
         <label for="password">Password</label>

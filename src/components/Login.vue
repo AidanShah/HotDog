@@ -6,15 +6,24 @@ import Home from './Home.vue'
 
 export default {
   data(){
-    
+    return{
+    username:"",
+    password:"",}
   }, 
   methods: {
 
   
     signUpButton(){
       window.location.replace("#/signup")
-    }
-
+    },
+    backend(){
+      axios.get("SOME_URL").then(response => {
+      console.log(response.data); // do you want to do something else here? 
+    })},
+    login() {
+      this.username = this.text;
+      this.password = this.text;
+    },
     },
 
     props: {

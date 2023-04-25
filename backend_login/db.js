@@ -86,22 +86,8 @@ const login = (request, response) => {
     });
   };
 
-  const changeTokens = (request, response) => {
-    const username = request.params.username;
-    const newTokens = request.mewTokens;
-    const query = 'Update hotdog SET tokens = ? WHERE username = ?'
-    db.get(query, [newTokens, username], (error, result) =>{
-      if (error){
-        console.error(error.message);
-        response.status(400).json({ error: error.message });
-        return;
-      }
-    });
-  };
-
   module.exports = {
     login,
     changePassword,
     signup,
-    changeTokens,
   };

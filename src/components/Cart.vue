@@ -77,4 +77,13 @@ export default {
         @add-to-cart="(itemName, price) => addToCart(itemName, price)"></CartItem>
 </template>
 
-<style scoped></style>
+<style scoped>
+.container {
+  max-width: 400px;
+  margin: 10 auto;
+  padding-top: 10px;
+}
+
+
+
+</style>

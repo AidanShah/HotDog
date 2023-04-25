@@ -9,22 +9,29 @@ export default {
 <template>
     <div class="item">
         <img :src="url" width="300" height="300">
-        <h1>Name: {{ itemName }}</h1>
-        <h1>Price: ${{ price }}</h1>
-        <h1>Description: {{ desc }}</h1>
+        <h2>Name: {{ itemName }}</h2>
+        <h2>Price: ${{ price }}</h2>
+        <div class = "description"> Description: {{ desc }}</div>
         <button @click="addToCart()">Add to cart</button>
     </div>
 </template>
   
 <style scoped>
+
+
 .item {
-    display: flex;
     align-items: center;
     margin-top: 2rem;
     border: 3px solid black;
-    height: 400px;
-    width: 800px;
-    padding-left: 5px;
-    padding-right: 5px;
+    height: 60vh;
+    width: 100vh;
+    padding-left: 5vh;
+    padding-right: 5vh;
 }
+
+.description {
+    font-size: 20px;
+  color: rgba(0, 0, 255, 0.493);
+}
+
 </style>

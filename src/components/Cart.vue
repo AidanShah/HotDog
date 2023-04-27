@@ -44,7 +44,7 @@ export default {
                 this.cart[itemName].count++;
 
             } else {
-                this.cart[itemName] = { count: 0 }
+                this.cart[itemName] = { count: 1 }
             }
             this.total += Number(price);
         },

@@ -25,7 +25,7 @@ export default {
   data() {
     return {
       hotdog: "default", 
-      numDresses: 0,
+      numDresses: 1,
       currentPath: routes['/'], 
       // 2. change the currentPath to be the value of the routes variable (instead of just a string)
     }

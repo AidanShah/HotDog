@@ -17,7 +17,7 @@ export default {
       window.location.replace("#/signup")
     },
     backend(){
-      axios.get("SOME_URL").then(response => {
+      axios.get("localhost:4000/login").then(response => {
       console.log(response.data); // do you want to do something else here? 
     })},
     login() {

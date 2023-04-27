@@ -3,9 +3,10 @@ export default {
     props: ["url", "itemName", "desc", "price"],
     methods: { addToCart() { 
         this.$emit('addToCart', this.itemName, this.price) },
+
       delFromCart(){
-        this.$emit('delFromCart', this.itemName, this.price)
-      } }
+        this.$emit('delFromCart', this.itemName, this.price)},
+     }
 }
 </script>
 
@@ -13,13 +14,12 @@ export default {
     <div class="item">
         <img :src="url" width="300" height="300">
         <div class="text">
-
           <h2>Name: {{ itemName }}</h2>
           <h2>Price: {{ price }} tokens</h2>
         </div>
         <div class = "description"> Description: {{ desc }}</div>
         <button type="cartitem" @click="addToCart()">Add to cart</button>
-        <button type="delItem" @click="$event => delFromCart()">Delete from cart</button>
+        <button type="delItem" @click="delFromCart()">Delete from cart</button>
     </div>
 
 </template>

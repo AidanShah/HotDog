@@ -50,12 +50,13 @@ export default {
         },
 
         delFromCart(itemName, price){
+            this.total = 10000;
             if (this.cart[itemName] != undefined) {
                 this.cart[itemName].count--;
 
             } else {
                 // TODO: delete item
-                this.cart[itemName] = { count: 1 }
+                this.cart[itemName] = undefined;
             }
             this.total -= Number(price);
         },
@@ -92,15 +93,23 @@ export default {
 
     
     <CartItem itemName='Pickledog' desc="A disgusting hotdog with a pickle on the top. Smells terrible" price=5.00
-        url="https://i.ibb.co/swr7JHK/Pickledog.png" @add-to-cart="(itemName, price) => addToCart(itemName, price)">
+        url="https://i.ibb.co/swr7JHK/Pickledog.png" 
+        @add-to-cart="(itemName, price) => addToCart(itemName, price)" 
+        @del-from-cart="(itemName, price) => delFromCart(itemName, price)">
     </CartItem>
     <CartItem itemName='Cookie hotdog' desc="A tasty hotdog with chocolate sprinkled on top. Smells amazing" price="5.50"
-        url="https://i.ibb.co/WDwff6q/Cookiedog.png" @add-to-cart="(itemName, price) => addToCart(itemName, price)">
+        url="https://i.ibb.co/WDwff6q/Cookiedog.png" 
+        @add-to-cart="(itemName, price) => addToCart(itemName, price)" 
+        @del-from-cart="(itemName, price) => delFromCart(itemName, price)">
     </CartItem>
+
     <CartItem itemName='Cheddardog' desc="A very cheesy dog." price="5.50" url="https://i.ibb.co/3TLr0YR/Cheddardog.jpg"
-        @add-to-cart="(itemName, price) => addToCart(itemName, price)"></CartItem>
+        @add-to-cart="(itemName, price) => addToCart(itemName, price)" 
+        @del-from-cart="(itemName, price) => delFromCart(itemName, price)"></CartItem>
+
     <CartItem itemName='Eggdog' desc="An eggdog... I don't know why" price="10.50" url="https://i.ibb.co/1rCqC2S/Eggdog.jpg"
-        @add-to-cart="(itemName, price) => addToCart(itemName, price)"></CartItem>
+        @add-to-cart="(itemName, price) => addToCart(itemName, price)" 
+        @del-from-cart="(itemName, price) => delFromCart(itemName, price)"></CartItem>
 
     <br>
     <button type="clearitem" @click=" clearCartItem() ">Clear Cart</button>

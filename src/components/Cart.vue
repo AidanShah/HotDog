@@ -87,7 +87,7 @@ export default {
         @add-to-cart="(itemName, price) => addToCart(itemName, price)"></CartItem>
 
     <br>
-    <button type="clearitem" @click=" clearCartItem() ">Clear Item</button>
+    <button type="clearitem" @click=" clearCartItem() ">Clear Cart</button>
 
 </template>
 

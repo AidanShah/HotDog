@@ -10,7 +10,7 @@ export default {
     <div class="item">
         <img :src="url" width="300" height="300">
         <h2>Name: {{ itemName }}</h2>
-        <h2>Price: ${{ price }}</h2>
+        <h2>Price: {{ price }} tokens</h2>
         <div class = "description"> Description: {{ desc }}</div>
         <button type="cartitem" @click="addToCart()">Add to cart</button>
     </div>

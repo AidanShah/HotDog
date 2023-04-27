@@ -55,7 +55,11 @@ export default {
         },
 
         addTokens(){
-            this.Tokens += 5
+            this.Tokens += 5;
+        },
+
+        clearTokens(){
+            this.Tokens = 0;
         }
     }
 }
@@ -66,7 +70,8 @@ export default {
     <p>Cart: {{ cart }}</p>
     <p> Total Price: ${{ total }}</p>
     <p>Tokens: {{ Tokens }}</p>
-    <button v-on:click="addTokens">Add Tokens</button>gi
+    <button v-on:click="addTokens">Add Tokens</button>
+    <button v-on:click="clearTokens">Clear Tokens</button>
 
     <!-- We can simplify the below like this: 
     <CartItem v-for="item in itemList" 

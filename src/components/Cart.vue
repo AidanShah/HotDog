@@ -8,7 +8,6 @@ export default {
         return {
             cart: {},
             total: 0,
-            Tokens: Home.Tokens,
             // props 
             itemList: [
             {
@@ -35,7 +34,8 @@ export default {
                 price: 10.50,
                 url: "https://i.ibb.co/1rCqC2S/Eggdog.jpg"
             }
-            ]
+            ],
+            Tokens: 0
         }
     },
     methods: {
@@ -53,6 +53,10 @@ export default {
             this.total = 0;
             this.cart = {};
         },
+
+        addTokens(){
+            this.Tokens += 5
+        }
     }
 }
 </script>
@@ -62,6 +66,7 @@ export default {
     <p>Cart: {{ cart }}</p>
     <p> Total Price: ${{ total }}</p>
     <p>Tokens: {{ Tokens }}</p>
+    <button v-on:click="addTokens">Add Tokens</button>gi
 
     <!-- We can simplify the below like this: 
     <CartItem v-for="item in itemList" 

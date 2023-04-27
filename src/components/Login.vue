@@ -19,9 +19,10 @@ export default {
       window.location.replace("#/signup")
     },
     backend(){
-      this.url += username + "/"+ password
+      this.url += this.username + "/"+ this.password
       axios.get(url).then(response => {
       console.log(response.data);
+      window.location.replace("#/signup")
        // do you want to do something else here? 
     })},
     },
@@ -56,10 +57,9 @@ export default {
         <button type="submit" @click="backend()">Login</button>
         <div class="error-message"></div>
       </form>
-
+      <p>{{ password }}, {{ username }} {{ url }}</p>
       <button type="signup" @click="signUpButton">Sign Up</button>
     </div>
-
   
 
   </body>

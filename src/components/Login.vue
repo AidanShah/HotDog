@@ -55,7 +55,6 @@ export default {
         <input v-model="password" type="password" id="password" name="password" required>
         <button type="submit" @click="backend()">Login</button>
         <div class="error-message"></div>
-
       </form>
 
       <button type="signup" @click="signUpButton">Sign Up</button>

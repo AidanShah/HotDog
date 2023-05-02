@@ -52,18 +52,16 @@ export default {
                 this.total += Number(price);
             } else {
                 this.cart[itemName] = { count: 1 }
-                this.total += Number(price);
             }
         },
 
         delFromCart(itemName, price){
-
             if (this.cart[itemName] != undefined && this.cart[itemName].count > 1) {
                 this.cart[itemName].count--;
                 this.total -= Number(price); 
-            } else if(this.cart[itemName] != undefined && this.cart[itemName].count <= 1){
+            } 
+            else {
                 // TODO: delete item
-                this.total -= Number(price); 
                 this.cart[itemName] = undefined;
             }
         },
@@ -81,7 +79,15 @@ export default {
 
         clearTokens(){
             this.Tokens = 0;
+        },
+        checkOut(){
+            this.Tokens = this.Tokens - this.total;
+            this.total = 0;
+            this.cart = {};
+            alert("Thanks for shopping with us! You have " + this.Tokens + " tokens left.");
         }
+
+
     }
 }
 </script>
@@ -127,6 +133,9 @@ export default {
     <br>
     <button type="clearitem" @click=" clearCartItem() ">Clear Cart</button>
 
+    <br>
+    <button type="checkout" @click=" checkOut() ">Checkout</button>
+
 </template>
 
 <style scoped>
@@ -161,5 +170,28 @@ button[type="clearitem"]:hover {
   font-size: 16px;
 }
 
+button[type = "checkout"] {
+    display: block;
+    width: 80%;
+    background-color: rgba(21, 255, 0, 0.695);
+    color: rgb(255, 255, 255);
+    padding: 10px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button[type = "checkout"]:hover {
+    display: block;
+    width: 80%;
+    background-color: rgba(17, 109, 213, 0.695);
+    color: rgb(255, 255, 255);
+    padding: 10px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 16px;
+}
 
 </style>

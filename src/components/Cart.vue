@@ -47,9 +47,9 @@ export default {
     },
     methods: {
         addToCart(itemName, price) {
+            this.total += Number(price);
             if (this.cart[itemName] != undefined) {
                 this.cart[itemName].count++;
-                this.total += Number(price);
             } else {
                 this.cart[itemName] = { count: 1 }
             }
@@ -60,9 +60,9 @@ export default {
                 this.cart[itemName].count--;
                 this.total -= Number(price); 
             } 
-            else {
-                // TODO: delete item
+            else if(this.cart[itemName] != undefined && this.cart[itemName].count <= 1){
                 this.cart[itemName] = undefined;
+                this.total -= Number(price); 
             }
         },
 

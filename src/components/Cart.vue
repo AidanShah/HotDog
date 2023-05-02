@@ -42,30 +42,29 @@ export default {
         addToCart(itemName, price) {
             if (this.cart[itemName] != undefined) {
                 this.cart[itemName].count++;
-
+                this.total += Number(price);
             } else {
                 this.cart[itemName] = { count: 1 }
             }
-            this.total += Number(price);
         },
 
         delFromCart(itemName, price){
-            this.total = 10000;
-            if (this.cart[itemName] != undefined) {
+            if (this.cart[itemName] != undefined && this.cart[itemName].count > 0) {
                 this.cart[itemName].count--;
-
+                this.total -= Number(price); 
             } else {
                 // TODO: delete item
                 this.cart[itemName] = undefined;
             }
-            this.total -= Number(price);
         },
 
         clearCartItem(){
             this.total = 0;
             this.cart = {};
         },
-
+        // Need to make a way to stay logged in on every page.
+        // Probably create a central unchanging file that records this or something so 
+        // we can access it later.
         addTokens(){
             this.Tokens += 5;
         },

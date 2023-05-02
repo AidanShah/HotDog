@@ -9,7 +9,7 @@ export default {
     return{
     username:"",
     password:"",
-    url:"localhost:4000/login/"
+    url:"http://localhost:4000/login/"
   }
   }, 
   methods: {
@@ -20,9 +20,9 @@ export default {
     },
     backend(){
       this.url += this.username + "/"+ this.password
-      axios.get(url).then(response => {
+      axios.get(this.url).then(response => {
       console.log(response.data);
-      window.location.replace("#/signup")
+      window.location.replace("#/home")
        // do you want to do something else here? 
     })},
     },
@@ -54,10 +54,9 @@ export default {
         <input v-model="username" type="email" id="email" name="email" required>
         <label for="password">Password</label>
         <input v-model="password" type="password" id="password" name="password" required>
-        <button type="submit" @click="backend()">Login</button>
         <div class="error-message"></div>
       </form>
-      <p>{{ password }}, {{ username }} {{ url }}</p>
+      <button type="submit" @click="backend()">Login</button>
       <button type="signup" @click="signUpButton">Sign Up</button>
     </div>
   

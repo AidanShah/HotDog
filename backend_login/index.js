@@ -8,7 +8,7 @@ app.use(express.json());
 
 app.use((req, res, next) => {
   const allowedOrigins = [
-    "http://localhost:8080","http://localhost:2223"
+    "http://localhost:8080","http://localhost:2223","http://localhost:2223/#/signup","http://localhost:2223/#/login"
   ];
   const origin = req.headers.origin;
   if (allowedOrigins.includes(origin)) {

@@ -8,13 +8,14 @@ export default {
     return{
     username:"",
     password:"",
-    url:"localhost:4000/signup/",
+    url:"http://localhost:4000/signup/",
     log:""
   }
   }, 
   methods: {
     backend(){
       this.url += this.username + "/"+ this.password
+      this.log = "4"
       axios.post(this.url).then(response => {
         console.log(response.data);
         this.log = response.data
@@ -23,9 +24,6 @@ export default {
     })
     
   },
-    urlCreate(){
-      this.url += this.username + "/"+ this.password
-    }
     },
 
     props: {
@@ -55,11 +53,9 @@ export default {
         <input v-model="username" type="email" id="email" name="email" required>
         <label for="password">Password</label>
         <input v-model="password" type="password" id="password" name="password" required>
-        <button type="no">Sign up</button>
         <div class="error-message"></div>
-
       </form>
-      <button @click="backend()" type="no">Url</button>
+      <button @click="backend()" type="no">Sign Up</button>
         <p>{{ log }}</p>
     </div>
 

@@ -8,17 +8,21 @@ export default {
     return{
     username:"",
     password:"",
-    url:"localhost:4000/signup/"
+    url:"localhost:4000/signup/",
+    log:""
   }
   }, 
   methods: {
     backend(){
       this.url += this.username + "/"+ this.password
-      axios.post(url).then(response => {
-      console.log(response.data);
-      window.location.replace("#/signup")
+      axios.post(this.url).then(response => {
+        console.log(response.data);
+        this.log = response.data
+        return response.data
        // do you want to do something else here? 
-    })},
+    })
+    
+  },
     urlCreate(){
       this.url += this.username + "/"+ this.password
     }
@@ -51,12 +55,12 @@ export default {
         <input v-model="username" type="email" id="email" name="email" required>
         <label for="password">Password</label>
         <input v-model="password" type="password" id="password" name="password" required>
-        <button type="submit">Sign up</button>
+        <button type="no">Sign up</button>
         <div class="error-message"></div>
 
       </form>
-      <button @click="urlCreate()" type="no">Url</button>
-        <p>{{ url }}</p>
+      <button @click="backend()" type="no">Url</button>
+        <p>{{ log }}</p>
     </div>
 
   
@@ -101,7 +105,7 @@ input[type="password"] {
   box-sizing: border-box;
 }
 
-button[type="submit"] {
+button[type="no"] {
   display: block;
   width: 100%;
   background-color: #4CAF50;

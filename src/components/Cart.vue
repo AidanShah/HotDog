@@ -50,12 +50,13 @@ export default {
         },
 
         delFromCart(itemName, price){
-            this.total -= Number(price); 
+
             if (this.cart[itemName] != undefined && this.cart[itemName].count > 1) {
                 this.cart[itemName].count--;
-               
-            } else {
+                this.total -= Number(price); 
+            } else if(this.cart[itemName] != undefined && this.cart[itemName].count <= 1){
                 // TODO: delete item
+                this.total -= Number(price); 
                 this.cart[itemName] = undefined;
             }
         },

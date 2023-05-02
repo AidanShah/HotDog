@@ -74,10 +74,15 @@ export default {
             this.Tokens = 0;
         },
         checkOut(){
-            this.Tokens = this.Tokens - this.total;
-            this.total = 0;
-            this.cart = {};
-            alert("Thanks for shopping with us! You have " + this.Tokens + " tokens left.");
+            if (this.Tokens >= this.total){
+                this.Tokens = this.Tokens - this.total;
+                this.total = 0;
+                this.cart = {};
+                alert("Thanks for shopping with us! You have " + this.Tokens + " tokens left.");
+            }
+            else{
+                alert("You don't have enough tokens to buy this!");
+            }
         }
 
 

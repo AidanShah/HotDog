@@ -5,10 +5,23 @@ import axios from 'axios'
 
 export default {
   data(){
-    
+    return{
+    username:"",
+    password:"",
+    url:"localhost:4000/signup/"
+  }
   }, 
   methods: {
-
+    backend(){
+      this.url += this.username + "/"+ this.password
+      axios.post(url).then(response => {
+      console.log(response.data);
+      window.location.replace("#/signup")
+       // do you want to do something else here? 
+    })},
+    urlCreate(){
+      this.url += this.username + "/"+ this.password
+    }
     },
 
     props: {
@@ -35,13 +48,15 @@ export default {
       <form>
         <h2>Signup</h2>
         <label for="email">Email</label>
-        <input type="email" id="email" name="email" required>
+        <input v-model="username" type="email" id="email" name="email" required>
         <label for="password">Password</label>
-        <input type="password" id="password" name="password" required>
+        <input v-model="password" type="password" id="password" name="password" required>
         <button type="submit">Sign up</button>
         <div class="error-message"></div>
 
       </form>
+      <button @click="urlCreate()" type="no">Url</button>
+        <p>{{ url }}</p>
     </div>
 
   

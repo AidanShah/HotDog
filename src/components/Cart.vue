@@ -33,7 +33,14 @@ export default {
                 desc: "An eggdog... I don't know why",
                 price: 10.50,
                 url: "https://i.ibb.co/1rCqC2S/Eggdog.jpg"
-            }
+            },
+            {
+                itemName: "SpaceDog",
+                desc: "Hot dog in space",
+                price: 20.50,
+                url : "https://i.pinimg.com/originals/8e/31/45/8e3145abea8c1bf3983fd87f8247bc57.jpg"
+
+            },
             ],
             Tokens: 0
         }
@@ -112,6 +119,10 @@ export default {
     <CartItem itemName='Eggdog' desc="An eggdog... I don't know why" price="10.50" url="https://i.ibb.co/1rCqC2S/Eggdog.jpg"
         @add-to-cart="(itemName, price) => addToCart(itemName, price)" 
         @del-from-cart="(itemName, price) => delFromCart(itemName, price)"></CartItem>
+    
+    <CartItem itemName='SpaceDog' desc="Hot dog in space" price="20.50" url="https://i.pinimg.com/originals/8e/31/45/8e3145abea8c1bf3983fd87f8247bc57.jpg"
+    @add-to-cart="(itemName, price) => addToCart(itemName, price)" 
+    @del-from-cart="(itemName, price) => delFromCart(itemName, price)"></CartItem>
 
     <br>
     <button type="clearitem" @click=" clearCartItem() ">Clear Cart</button>

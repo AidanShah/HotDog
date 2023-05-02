@@ -45,13 +45,15 @@ export default {
                 this.total += Number(price);
             } else {
                 this.cart[itemName] = { count: 1 }
+                this.total += Number(price);
             }
         },
 
         delFromCart(itemName, price){
-            if (this.cart[itemName] != undefined && this.cart[itemName].count > 0) {
+            this.total -= Number(price); 
+            if (this.cart[itemName] != undefined && this.cart[itemName].count > 1) {
                 this.cart[itemName].count--;
-                this.total -= Number(price); 
+               
             } else {
                 // TODO: delete item
                 this.cart[itemName] = undefined;

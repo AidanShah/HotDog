@@ -39,8 +39,8 @@ const login = (request, response) => {
     // Parse the id to generate a SQLite query
     const username = request.params.username;
     const password = request.params.password;
-    const query1 = `SELECT * FROM hotdog WHERE username = ?`;
-    const query2 = `INSERT INTO hotdog (username,password) VALUES (?,?)`;
+    const query1 = `SELECT * FROM hotdog WHERE email = ?`;
+    const query2 = `INSERT INTO hotdog (email,password) VALUES (?,?)`;
     db.get(query1, [username], (error, result) => {
       if (error) {
         console.error(error.message);
@@ -73,7 +73,7 @@ const login = (request, response) => {
     const username = request.params.username;
     const password = request.params.password;
     const newpassword = request.params.newpassword;
-    const query = `UPDATE hotdog SET password = ? WHERE username = ? and password = ?`;
+    const query = `UPDATE hotdog SET password = ? WHERE email = ? and password = ?`;
     db.get(query, [newpassword, username, password], (error, result) => {
       if (error) {
         console.error(error.message);
@@ -89,7 +89,7 @@ const login = (request, response) => {
   const changeTokens = (request, response) => {
     const username = request.params.username;
     const newTokens = request.mewTokens;
-    const query = 'Update hotdog SET tokens = ? WHERE username = ?'
+    const query = 'Update hotdog SET tokens = ? WHERE email = ?'
     db.get(query, [newTokens, username], (error, result) =>{
       if (error){
         console.error(error.message);

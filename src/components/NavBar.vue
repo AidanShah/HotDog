@@ -31,6 +31,11 @@ export default {
                 <a href="/#/statistics" rel="noopener">Statistics</a>
             </NavItem>-->
 
+            <NavItem>
+                <a href="/#/customize" rel="noopener">Customize</a>
+            </NavItem>
+
+
         </main>
         <div class="end">
 

@@ -23,12 +23,14 @@ const routes = {
   '/customize': Customize,
 }
 
-export default {
+export default { 
   data() {
     return {
       hotdog: "default", 
       numDresses: 1,
       currentPath: routes['/'], 
+      loggedIn: false,
+      tokens: 0
       // 2. change the currentPath to be the value of the routes variable (instead of just a string)
     }
   },
@@ -37,6 +39,10 @@ export default {
     someEvent(n) {
       this.hotdog = n;
       this.numDresses++;
+    },
+    login(n){
+      loggedIn = true
+      tokens = n
     }
   },
   mounted() {
@@ -52,7 +58,7 @@ export default {
   }
 }
 </script>
-
+<Login @login="login" />
 
 <template>
   <!-- 4. change Home to be a dynamic component, and add :is="currentPath" as a directive -->

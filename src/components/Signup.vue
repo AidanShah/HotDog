@@ -15,7 +15,6 @@ export default {
   methods: {
     backend(){
       this.url += this.username + "/"+ this.password
-      this.log = "4"
       axios.post(this.url).then(response => {
         console.log(response.data);
         this.log = response.data
@@ -56,7 +55,6 @@ export default {
         <div class="error-message"></div>
       </form>
       <button @click="backend()" type="no">Sign Up</button>
-        <p>{{ log }}</p>
     </div>
 
   

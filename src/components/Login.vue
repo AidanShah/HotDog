@@ -21,11 +21,10 @@ export default {
     },
     backend(){
       // Change login stored in database
-      this.url = this.urlChangeBase + this.username + "/"+ this.password
-      axios.get(this.url)
       this.url = this.urlLoginBase + this.username + "/"+ this.password
       axios.get(this.url).then((response) => {
       console.log(response.data);
+      this.$emit('login',response.data["tokens"])
       if (response.data == true){
         username = this.username
         password = this.password

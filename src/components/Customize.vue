@@ -7,15 +7,13 @@ export default {
     data() {
         return {
             src: "https://images.squarespace-cdn.com/content/v1/5dd8630d09ab5908e35b35a0/1574462664001-48S1VO61L9LNWNJ910CV/img-HotDogStock-1080x675.png?format=1000w",
+            imageLink: null,
             hotdog: "default", 
             imageLink: ''
         };
     },
     methods: {
-        submit() {
-            console.log(this.inputValue);
-            this.imageLink = '';
-        }
+
 
     }
 }
@@ -23,12 +21,34 @@ export default {
 
 <template>
     <NavBar></NavBar>
-    <img :src="src" alt="hotdog">
+
+    <h1>
+        Generated Hotdog Page
+
+    </h1>
+
+    <div class="image-container">
+
+        <img :src="src" alt="hotdog">
+
+        <img :src="imageLink" alt="hotdog">
+
+        
+    </div>
+
+   
 
     <center>
+        <p>
+            Put the url of the Image you want:
+        </p>
         <input class="input-box" type="input-box" v-model="imageLink" placeholder="Enter text">
-        <button @click="submit">Submit</button>
+    
     </center>
+
+    <div>
+
+    </div>
 
 
 </template>
@@ -64,4 +84,18 @@ img {
     display: flex;
     justify-content: space-evenly;
 }
+
+.image-container {
+    position: relative;
+  }
+
+  .image-container img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 600px;
+    height: 500px;
+
+  }
+
 </style>

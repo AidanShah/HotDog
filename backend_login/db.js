@@ -10,7 +10,7 @@ const login = (request, response) => {
     // Parse the id to generate a SQLite query
     const username = request.params.username;
     const password = request.params.password;
-    const query = `SELECT * FROM hotdog WHERE username = ?`;
+    const query = `SELECT * FROM hotdog WHERE email = ? `;
     db.get(query, [username], (error, result) => {
       if (error) {
         console.error(error.message);
@@ -21,14 +21,15 @@ const login = (request, response) => {
       if (result) {
         if(result['password']== password){
           console.log(result['password'])
-            passwordcheck = {"correct_password":true}
+            passwordcheck = true
             response.send(passwordcheck)
         }
         else{
-            passwordcheck = {"correct_password":false}
+            passwordcheck = false
             response.send(passwordcheck)
         }
-      } else {
+      }
+      else {
         test = {"login":"failed"}
         response.send(test)
       }
@@ -99,9 +100,39 @@ const login = (request, response) => {
     });
   };
 
+  const changeCurrentLogin = (request, response) => {
+    const username = request.params.username
+    const password = request.params.password
+    const query = "UPDATE CurrentLogin SET email = ?, password = ?"
+    db.get(query, [username, password], (error, result) => {
+      if (error){
+        console.error(error.message);
+        response.status(400).json({error: error.message});
+        return;
+      }
+    })
+  }
+
+  const getCurrentLogin = (request, response) => {
+    const query = "SELECT * FROM CurrentLogin"
+    db.get(query, (error, result) => {
+      if (error){
+        console.error(error.message);
+        response.status(400).json({error: error.message});
+        return;
+      }
+      else if (result){
+        console.log(result)
+        response.send(result);
+      }
+    })
+  }  
+
   module.exports = {
     login,
     changePassword,
     signup,
     changeTokens,
+    changeCurrentLogin,
+    getCurrentLogin
   };

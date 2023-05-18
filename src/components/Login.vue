@@ -1,15 +1,16 @@
 <script>
 import NavBar from './NavBar.vue';
 import axios from 'axios'
-import Home from './Home.vue'
-
+import Home from '../App.vue'
 
 export default {
   data(){
     return{
     username:"",
     password:"",
-    url:"http://localhost:4000/login/"
+    urlLoginBase:"http://localhost:4000/login/",
+    urlChangeBase:"http://localhost:4000/changeLogin/",
+    url: ""
   }
   }, 
   methods: {
@@ -19,10 +20,17 @@ export default {
       window.location.replace("#/signup")
     },
     backend(){
-      this.url += this.username + "/"+ this.password
-      axios.get(this.url).then(response => {
+      // Change login stored in database
+      this.url = this.urlChangeBase + this.username + "/"+ this.password
+      axios.get(this.url)
+      this.url = this.urlLoginBase + this.username + "/"+ this.password
+      axios.get(this.url).then((response) => {
       console.log(response.data);
-      window.location.replace("#/home")
+      if (response.data == true){
+        username = this.username
+        password = this.password
+        window.location.replace("#/")
+      }
        // do you want to do something else here? 
     })},
     },

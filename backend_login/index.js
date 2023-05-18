@@ -1,10 +1,10 @@
 const express = require("express");
 const app = express();
 const db = require("./db");
+const axios = require("axios")
+
 const PORT = 4000;
-
 app.use(express.json());
-
 
 app.use((req, res, next) => {
   const allowedOrigins = [
@@ -28,6 +28,8 @@ app.get("/login/:username/:password", db.login)
 app.post("/signup/:username/:password", db.signup)
 app.put("/change/:username/:password/:newpassword", db.changePassword)
 app.post("/home/:username/:newTokens", db.changeTokens)
+app.put("/changeLogin/:username/:password", db.changeCurrentLogin)
+app.get("/getLogin", db.getCurrentLogin)
 
 // ------ FILL IN BELOW -------
 // Write endpoints that allow a client to:
@@ -37,5 +39,8 @@ app.post("/home/:username/:newTokens", db.changeTokens)
 //-----------------------------
 app.listen(PORT, () => {
   console.log(`Listening on port ${PORT}`);
+  axios.get("http://localhost:4000/#/login/aidan_shah@horacemann.org/P").then((response) =>{
+    console.log(response.data);
+  });
 });
 //#endregion Server

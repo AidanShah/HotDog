@@ -6,11 +6,16 @@ export default {
     components: { NavBar, },
     data() {
         return {
-          
-        }
+            src: "https://images.squarespace-cdn.com/content/v1/5dd8630d09ab5908e35b35a0/1574462664001-48S1VO61L9LNWNJ910CV/img-HotDogStock-1080x675.png?format=1000w",
+            hotdog: "default", 
+            imageLink: ''
+        };
     },
     methods: {
- 
+        submit() {
+            console.log(this.inputValue);
+            this.imageLink = '';
+        }
 
     }
 }
@@ -18,71 +23,45 @@ export default {
 
 <template>
     <NavBar></NavBar>
+    <img :src="src" alt="hotdog">
 
-    <!-- We can simplify the below like this: 
-    <CartItem v-for="item in itemList" 
-    :itemName="item.itemName" :desc="item.desc" :price="item.price" :url="item.url"
-        @add-to-cart="(itemName, price) => addToCart(itemName, price)">
-    </CartItem> -->
-
+    <center>
+        <input class="input-box" type="input-box" v-model="imageLink" placeholder="Enter text">
+        <button @click="submit">Submit</button>
+    </center>
 
 
 </template>
 
 <style scoped>
-.container {
-  max-width: 400px;
-  margin: 10 auto;
-  padding-top: 10px;
-}
 
-button[type="clearitem"] {
-  display: block;
-  width: 80%;
-  background-color: pink;
-  color: black;
+
+.input-box {
   padding: 10px;
-  border: none;
-  border-radius: 3px;
-  cursor: pointer;
+  border: 1px solid #ccc;
+  border-radius: 5px;
   font-size: 16px;
+  width: 200px;
 }
 
-
-button[type="clearitem"]:hover {
-  display: block;
-  width: 80%;
-  background-color: rgba(231, 34, 67, 0.695);
-  color: black;
-  padding: 10px;
+button {
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
   border: none;
-  border-radius: 3px;
-  cursor: pointer;
+  border-radius: 5px;
   font-size: 16px;
+  cursor: pointer;
 }
 
-button[type = "checkout"] {
+img {
     display: block;
-    width: 80%;
-    background-color: rgba(21, 255, 0, 0.695);
-    color: rgb(255, 255, 255);
-    padding: 10px;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
-    font-size: 16px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-button[type = "checkout"]:hover {
-    display: block;
-    width: 80%;
-    background-color: rgba(17, 109, 213, 0.695);
-    color: rgb(255, 255, 255);
-    padding: 10px;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
-    font-size: 16px;
+.links {
+    display: flex;
+    justify-content: space-evenly;
 }
-
 </style>

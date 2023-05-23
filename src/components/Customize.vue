@@ -1,32 +1,52 @@
 <script>
 import NavBar from './NavBar.vue'
+import axios from 'axios';
+import { Configuration, OpenAIApi } from "openai";
 
 
 export default {
     components: { NavBar, },
     data() {
-        const imageLinkArray = [
-            {
-                imageLink: "https://www.pngmart.com/files/5/Donuts-PNG-File.png",
-            },
-            {
-                imageLink: "https://www.pngall.com/wp-content/uploads/11/Donut-No-Background.png",
-            }
-        ];
+        sentence: "a cute baby octopus";
 
         return {
             src: "https://images.squarespace-cdn.com/content/v1/5dd8630d09ab5908e35b35a0/1574462664001-48S1VO61L9LNWNJ910CV/img-HotDogStock-1080x675.png?format=1000w",
-            hotdog: "default", 
+            hotdog: "default",
             imageLink: '',
 
         };
     },
+    
     methods: {
-        generateHotDog(){
+        getDallEImage() {
+            const options = {
+                method: 'POST',
+                url: 'https://api.openai.com/v1/images/generations',
+                    headers: {
+                        'content-type': 'application/json',
+                        "Authorization": "Bearer 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",
+                    },
+                data: {
+                    prompt: this.sentence,
+                    n: 2,
+                    size: '1024x1024'
+                }
+        };
 
-        },
 
+        try {
+            console.log("trying something" + this.sentence)
+            // const response = axios.request(options, (error, result) => {
+            //     // do something with the result 
+            //     console.log(result);
+            //     console.log(error);
+
+            // });
+        } catch(error) {
+            console.error(error);
+        }
     }
+}
 }
 </script>
 
@@ -44,54 +64,57 @@ export default {
 
         <img :src="imageLink" alt="hotdog">
 
-        
+
     </div>
 
-   
+
 
     <center>
         <p>
             Put the url of the Image you want:
         </p>
         <input class="input-box" type="input-box" v-model="imageLink" placeholder="Enter text">
+    </center>
 
+
+    <center>
         <p>
-            OR <br>
-            Generate a randomly generated hotdog
+            Put sentence to generate in Dall E
         </p>
 
-        <button v-on:click="generateHotDog">
-            Generate
+        <input class="input-box" type="input-box" v-model="sentence" placeholder="Enter text">
+
+        <button @click="getDallEImage">
+            Generate Image
         </button>
-    
+
     </center>
+
+
+
 
     <div>
 
     </div>
-
-
 </template>
 
 <style scoped>
-
-
 .input-box {
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 16px;
-  width: 200px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    width: 200px;
 }
 
 button {
-  padding: 10px 20px;
-  background-color: #4CAF50;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  font-size: 16px;
-  cursor: pointer;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
 }
 
 img {
@@ -107,15 +130,14 @@ img {
 
 .image-container {
     position: relative;
-  }
+}
 
-  .image-container img {
+.image-container img {
     position: absolute;
     top: 0;
     left: 0;
     width: 600px;
     height: 500px;
 
-  }
-
+}
 </style>

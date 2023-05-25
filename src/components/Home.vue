@@ -82,8 +82,6 @@ export default {
 
             <!-- add a button that will call fetchDogs-->
             <button v-on:click="fetchDogs">Fetch Dogs</button>
-            <button v-on:click="addTokens">Add Tokens</button>
-            <p>Tokens: {{ tokens }}</p>
         </div>
     </body>
 </template>

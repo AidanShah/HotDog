@@ -24,8 +24,10 @@ export default {
       // Change login stored in database
       this.url = this.urlLoginBase + this.username + "/"+ this.password
       axios.get(this.url).then((response) => {
-        console.log(response.data["tokens"])
-      this.$emit('login',response.data["tokens"])
+        console.log(response.data["Tokens"])
+        console.log(response.data)
+        if(response.data["Login"]==true){
+          this.$emit('login',response.data["Tokens"])}
         window.location.replace("#/")
        // do you want to do something else here? 
     })},

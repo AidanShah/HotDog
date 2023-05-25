@@ -21,7 +21,7 @@ const login = (request, response) => {
       if (result) {
         if(result['password']== password){
           console.log(result['password'])
-            passwordcheck = true
+            passwordcheck = {"Login":true, "Tokens":result["Tokens"]}
             response.send(passwordcheck)
         }
         else{

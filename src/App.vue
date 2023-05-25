@@ -65,6 +65,7 @@ export default {
   <!-- 4. change Home to be a dynamic component, and add :is="currentPath" as a directive -->
   <component :is="currentPath" @change-data="someEvent" :hotdog="hotdog" :tokens="tokens" @login="login"/>
   <div class="center">
+  Have you logged in {{ loggedIn }}
   </div>
 </template>
 

@@ -18,6 +18,7 @@ export default {
         };
     },
 
+    // https://www.transparentpng.com/thumb/unicorn/I5APeU-unicorn-cute-unicorn-svg-cut-file-scrapbook-cut-file-cute.png
     methods: {
         async getDallEImage() {
             const options = {
@@ -25,7 +26,7 @@ export default {
                 url: 'https://api.openai.com/v1/images/generations',
                 headers: {
                     'content-type': 'application/json',
-                    "Authorization": "Bearer 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",
+                    "Authorization": "Bearer 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",
                 },
                 data: {
                     prompt: this.sentence,
@@ -34,18 +35,19 @@ export default {
                 }
             };
 
-            
-                console.log("trying something" + this.sentence)
-                const response = await axios.request(options);
-                // // do something with the result 
-                // console.log(response["data"]);
-                // console.log(response["data"][0].url);
-                const obj = response.data[0]; 
-                this.dallEImage = obj.url;
 
+            console.log("trying something" + this.sentence)
+            const response = await axios.request(options);
+            // // do something with the result 
+            // console.log(response["data"][0].url);
+            return response;
 
-            
+        },
 
+        async setDallEImage() {
+            const ddata = await this.getDallEImage();
+            console.log(ddata["data"]);
+            this.dallEImage = ddata.data.data[0].url;
         }
     }
 }
@@ -59,38 +61,45 @@ export default {
 
     </h1>
 
-    <!-- <div class="image-container">
+    <div class="image-container">
 
+        <img :src="dallEImage">
+        
         <img :src="src" alt="hotdog">
 
         <img :src="imageLink" alt="hotdog">
 
-
-    </div> -->
-
+    </div>
 
 
-    <center>
+
+    <div class="inputButton">
+
         <p>
             Put the url of the Image you want:
         </p>
         <input class="input-box" type="input-box" v-model="imageLink" placeholder="Enter text">
 
-    </center>
+    </div>
 
 
 
-    <p>
-        Put sentence to generate in Dall E
-    </p>
 
-    <input class="input-box" type="input-box" v-model="sentence" placeholder="Enter text">
+    <div class="inputButton2">
 
-    <button @click="getDallEImage">
-        Generate Image
-    </button>
+        <p>
+            Put sentence to generate in Dall E
+        </p>
 
-    <img :src="dallEImage">
+        <input class="input-box" type="input-box" v-model="sentence" placeholder="Enter text">
+    </div>
+
+
+    <div class="inputButton2">
+        <button @click="setDallEImage">
+            Generate Image
+        </button>
+    </div>
 
 
 </template>
@@ -135,6 +144,16 @@ img {
     left: 0;
     width: 600px;
     height: 500px;
+    left: 600px;
 
+
+}
+
+.inputButton {
+    position: relative;
+}
+
+.inputButton2 {
+      position: relative;
 }
 </style>

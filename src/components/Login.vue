@@ -10,7 +10,8 @@ export default {
     password:"",
     urlLoginBase:"http://localhost:4000/login/",
     urlChangeBase:"http://localhost:4000/changeLogin/",
-    url: ""
+    url: "",
+    emits: ['login']
   }
   }, 
   methods: {
@@ -23,7 +24,7 @@ export default {
       // Change login stored in database
       this.url = this.urlLoginBase + this.username + "/"+ this.password
       axios.get(this.url).then((response) => {
-      console.log(response.data);
+        console.log(response.data["tokens"])
       this.$emit('login',response.data["tokens"])
         window.location.replace("#/")
        // do you want to do something else here? 

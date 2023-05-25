@@ -27,7 +27,7 @@ app.get("/", (req, res) => {
 app.get("/login/:username/:password", db.login)
 app.post("/signup/:username/:password", db.signup)
 app.put("/change/:username/:password/:newpassword", db.changePassword)
-app.post("/home/:username/:newTokens", db.changeTokens)
+app.put("/home/:username/:newTokens", db.changeTokens)
 app.put("/changeLogin/:username/:password", db.changeCurrentLogin)
 app.get("/getLogin", db.getCurrentLogin)
 

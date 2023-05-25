@@ -13,40 +13,41 @@ export default {
             src: "https://images.squarespace-cdn.com/content/v1/5dd8630d09ab5908e35b35a0/1574462664001-48S1VO61L9LNWNJ910CV/img-HotDogStock-1080x675.png?format=1000w",
             hotdog: "default",
             imageLink: '',
+            dallEImage: '',
 
         };
     },
-    
+
     methods: {
-        getDallEImage() {
+        async getDallEImage() {
             const options = {
                 method: 'POST',
                 url: 'https://api.openai.com/v1/images/generations',
-                    headers: {
-                        'content-type': 'application/json',
-                        "Authorization": "Bearer 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",
-                    },
+                headers: {
+                    'content-type': 'application/json',
+                    "Authorization": "Bearer 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",
+                },
                 data: {
                     prompt: this.sentence,
                     n: 2,
                     size: '1024x1024'
                 }
-        };
+            };
+
+            
+                console.log("trying something" + this.sentence)
+                const response = await axios.request(options);
+                // // do something with the result 
+                // console.log(response["data"]);
+                // console.log(response["data"][0].url);
+                const obj = response.data[0]; 
+                this.dallEImage = obj.url;
 
 
-        try {
-            console.log("trying something" + this.sentence)
-            // const response = axios.request(options, (error, result) => {
-            //     // do something with the result 
-            //     console.log(result);
-            //     console.log(error);
+            
 
-            // });
-        } catch(error) {
-            console.error(error);
         }
     }
-}
 }
 </script>
 
@@ -58,14 +59,14 @@ export default {
 
     </h1>
 
-    <div class="image-container">
+    <!-- <div class="image-container">
 
         <img :src="src" alt="hotdog">
 
         <img :src="imageLink" alt="hotdog">
 
 
-    </div>
+    </div> -->
 
 
 
@@ -74,28 +75,24 @@ export default {
             Put the url of the Image you want:
         </p>
         <input class="input-box" type="input-box" v-model="imageLink" placeholder="Enter text">
-    </center>
-
-
-    <center>
-        <p>
-            Put sentence to generate in Dall E
-        </p>
-
-        <input class="input-box" type="input-box" v-model="sentence" placeholder="Enter text">
-
-        <button @click="getDallEImage">
-            Generate Image
-        </button>
 
     </center>
 
 
 
+    <p>
+        Put sentence to generate in Dall E
+    </p>
 
-    <div>
+    <input class="input-box" type="input-box" v-model="sentence" placeholder="Enter text">
 
-    </div>
+    <button @click="getDallEImage">
+        Generate Image
+    </button>
+
+    <img :src="dallEImage">
+
+
 </template>
 
 <style scoped>

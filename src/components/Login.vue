@@ -25,11 +25,7 @@ export default {
       axios.get(this.url).then((response) => {
       console.log(response.data);
       this.$emit('login',response.data["tokens"])
-      if (response.data == true){
-        username = this.username
-        password = this.password
         window.location.replace("#/")
-      }
        // do you want to do something else here? 
     })},
     },

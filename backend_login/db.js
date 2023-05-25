@@ -21,7 +21,7 @@ const login = (request, response) => {
       if (result) {
         if(result['password']== password){
           console.log(result['password'])
-            passwordcheck = true
+            passwordcheck = {"Login":true, "Tokens":result["Tokens"]}
             response.send(passwordcheck)
         }
         else{
@@ -89,7 +89,7 @@ const login = (request, response) => {
 
   const changeTokens = (request, response) => {
     const username = request.params.username;
-    const newTokens = request.mewTokens;
+    const newTokens = request.params.newTokens;
     const query = 'Update hotdog SET tokens = ? WHERE email = ?'
     db.get(query, [newTokens, username], (error, result) =>{
       if (error){

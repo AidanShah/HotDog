@@ -41,8 +41,8 @@ export default {
       this.numDresses++;
     },
     login(n){
-      loggedIn = true
-      tokens = n
+      this.loggedIn = true
+      this.tokens = n
     }
   },
   mounted() {
@@ -54,7 +54,8 @@ export default {
     })
   },
   components: {
-    Home
+    Home,
+    Login
   }
 }
 </script>
@@ -62,12 +63,8 @@ export default {
 
 <template>
   <!-- 4. change Home to be a dynamic component, and add :is="currentPath" as a directive -->
-  <component :is="currentPath" @change-data="someEvent" :hotdog="hotdog" />
-  <div>
-  <Login :tokens="tokens" @clicked="login"></Login>
-  </div>
+  <component :is="currentPath" @change-data="someEvent" :hotdog="hotdog" :tokens="tokens" @login="login"/>
   <div class="center">
-  You've dressed the dog {{ numDresses }} times!
   Have you logged in {{ loggedIn }}
   </div>
 </template>

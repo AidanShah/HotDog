@@ -41,7 +41,7 @@ export default {
             hotdog: this.hotdog,
             src: res.src,
             otherDogs: otherDogs,
-            Tokens: 0
+            tokens: 0
         }
     },
     emits: ['changeData'],
@@ -59,7 +59,7 @@ export default {
 
         },
         addTokens(){
-            this.Tokens += 5
+            this.tokens += 5
         }
     },
 
@@ -82,8 +82,6 @@ export default {
 
             <!-- add a button that will call fetchDogs-->
             <button v-on:click="fetchDogs">Fetch Dogs</button>
-            <button v-on:click="addTokens">Add Tokens</button>
-            <p>Tokens: {{ Tokens }}</p>
         </div>
     </body>
 </template>

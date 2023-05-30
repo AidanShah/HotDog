@@ -2,6 +2,7 @@
 import NavBar from './NavBar.vue'
 import CartItem from './CartItem.vue'
 import Home from './Home.vue'
+import axios from 'axios'
 export default {
     components: { NavBar, CartItem },
     props:['tokens'],
@@ -43,8 +44,15 @@ export default {
 
             },
             ],
-            Tokens: this.tokens
+            Tokens: this.$parent.tokens,
+            email: this.$parent.email,
+            ChangeTokenUrlBase: "http://localhost:4000/changeTokens/",
+            GetTokenUrlBase: "http://localhost:4000/getTokens/",
+            url : "",
         }
+    },
+    mounted(){
+        //this.getTokens(this.email)
     },
     methods: {
         addToCart(itemName, price) {
@@ -74,8 +82,21 @@ export default {
         // Need to make a way to stay logged in on every page.
         // Probably create a central unchanging file that records this or something so 
         // we can access it later.
+        getTokens(email){
+            this.url = this.GetTokenUrlBase + this.email
+            axios.get(this.url).then((response) =>{
+                console.log(response.data["Tokens"])
+                this.Tokens = response.data["Tokens"]
+            })
+        },
         addTokens(){
-            this.Tokens += 5;
+            this.Tokens += 5
+            /*const newTokens = this.Tokens + 5
+            this.url = this.ChangeTokenUrlBase + this.email + "/" + newTokens
+            axios.put(this.url).then((response) => {
+                console.log(response.data)
+            })
+            this.getTokens(this.email)*/
         },
 
         clearTokens(){
@@ -101,6 +122,7 @@ export default {
 <template>
     <NavBar></NavBar>
     <p>Cart: {{ cart }}</p>
+    <p>Email {{ email }}</p>
     <p> Total Price: ${{ total }}</p>
     <p>Tokens: {{ Tokens }}</p>
     <button v-on:click="addTokens">Add Tokens</button>

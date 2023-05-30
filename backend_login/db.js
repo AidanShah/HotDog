@@ -21,7 +21,7 @@ const login = (request, response) => {
       if (result) {
         if(result['password']== password){
           console.log(result['password'])
-            passwordcheck = {"Login":true, "Tokens":result["Tokens"]}
+            passwordcheck = {"Login":true, "Tokens":result["Tokens"], "email":result["email"]}
             response.send(passwordcheck)
         }
         else{
@@ -97,8 +97,22 @@ const login = (request, response) => {
         response.status(400).json({ error: error.message });
         return;
       }
-    });
+    })
   };
+
+  const getTokens = (request, response) => {
+    const username = request.params.username;
+    const query = "SELECT * FROM hotdog WHERE email = ?"
+    db.get(query, [username], (error, result) => {
+      if (error){
+        console.error(error.message);
+        return;
+      }
+      else{
+        response.send({"Tokens": result["Tokens"]})
+      }
+    })
+  }
 
   const changeCurrentLogin = (request, response) => {
     const username = request.params.username
@@ -134,5 +148,6 @@ const login = (request, response) => {
     signup,
     changeTokens,
     changeCurrentLogin,
-    getCurrentLogin
+    getCurrentLogin,
+    getTokens
   };

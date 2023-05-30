@@ -40,9 +40,10 @@ export default {
       this.hotdog = n;
       this.numDresses++;
     },
-    login(n){
+    login(n, email){
       this.loggedIn = true
       this.tokens = n
+      this.email = email
     }
   },
   mounted() {
@@ -55,7 +56,7 @@ export default {
   },
   components: {
     Home,
-    Login
+    Login,
   }
 }
 </script>
@@ -65,7 +66,7 @@ export default {
   <!-- 4. change Home to be a dynamic component, and add :is="currentPath" as a directive -->
   <component :is="currentPath" @change-data="someEvent" :hotdog="hotdog" :tokens="tokens" @login="login"/>
   <div class="center">
-  Have you logged in {{ loggedIn }}
+  {{ email }} is logged in {{ loggedIn }}
   <Cart v-bind:tokens="tokens"/>
   </div>
 </template>

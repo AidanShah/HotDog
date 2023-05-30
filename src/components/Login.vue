@@ -27,7 +27,7 @@ export default {
         console.log(response.data["Tokens"])
         console.log(response.data)
         if(response.data["Login"]==true){
-          this.$emit('login',response.data["Tokens"])}
+          this.$emit('login',response.data["Tokens"], response.data['email'])}
         window.location.replace("#/")
        // do you want to do something else here? 
     })},

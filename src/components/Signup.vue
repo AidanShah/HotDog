@@ -8,13 +8,14 @@ export default {
     return{
     username:"",
     password:"",
-    url:"http://localhost:4000/signup/",
+    url:"",
+    urlBase : "http://localhost:4000/signup/", 
     log:""
   }
   }, 
   methods: {
     backend(){
-      this.url += this.username + "/"+ this.password
+      this.url = this.urlBase + this.username + "/"+ this.password
       axios.post(this.url).then(response => {
         console.log(response.data);
         this.log = response.data

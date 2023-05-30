@@ -8,7 +8,7 @@ app.use(express.json());
 
 app.use((req, res, next) => {
   const allowedOrigins = [
-    "http://localhost:8080","http://localhost:2223","http://localhost:2223/#/signup","http://localhost:2223/#/login"
+    "http://localhost:8080","http://localhost:2223","http://localhost:2223/#/signup","http://localhost:2223/#/login", "http://localhost:2223/#/Cart"
   ];
   const origin = req.headers.origin;
   if (allowedOrigins.includes(origin)) {
@@ -27,9 +27,10 @@ app.get("/", (req, res) => {
 app.get("/login/:username/:password", db.login)
 app.post("/signup/:username/:password", db.signup)
 app.put("/change/:username/:password/:newpassword", db.changePassword)
-app.put("/home/:username/:newTokens", db.changeTokens)
+app.put("/changeTokens/:username/:newTokens", db.changeTokens)
 app.put("/changeLogin/:username/:password", db.changeCurrentLogin)
 app.get("/getLogin", db.getCurrentLogin)
+app.get("/getTokens/:username", db.getTokens)
 
 // ------ FILL IN BELOW -------
 // Write endpoints that allow a client to:

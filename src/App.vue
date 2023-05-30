@@ -29,8 +29,8 @@ export default {
       hotdog: "default", 
       numDresses: 1,
       currentPath: routes['/'], 
-      loggedIn: false,
-      tokens: 0
+      tokens: 0,
+      loggedIn:false
       // 2. change the currentPath to be the value of the routes variable (instead of just a string)
     }
   },
@@ -66,6 +66,7 @@ export default {
   <component :is="currentPath" @change-data="someEvent" :hotdog="hotdog" :tokens="tokens" @login="login"/>
   <div class="center">
   Have you logged in {{ loggedIn }}
+  <Cart v-bind:tokens="tokens"/>
   </div>
 </template>
 

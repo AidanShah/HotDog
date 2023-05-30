@@ -4,6 +4,7 @@ import CartItem from './CartItem.vue'
 import Home from './Home.vue'
 export default {
     components: { NavBar, CartItem },
+    props:['tokens'],
     data() {
         return {
             cart: {},
@@ -42,7 +43,7 @@ export default {
 
             },
             ],
-            Tokens: 0
+            Tokens: this.tokens
         }
     },
     methods: {
@@ -104,7 +105,6 @@ export default {
     <p>Tokens: {{ Tokens }}</p>
     <button v-on:click="addTokens">Add Tokens</button>
     <button v-on:click="clearTokens">Clear Tokens</button>
-
     <!-- We can simplify the below like this: 
     <CartItem v-for="item in itemList" 
     :itemName="item.itemName" :desc="item.desc" :price="item.price" :url="item.url"

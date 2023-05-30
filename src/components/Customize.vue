@@ -26,7 +26,7 @@ export default {
                 url: 'https://api.openai.com/v1/images/generations',
                 headers: {
                     'content-type': 'application/json',
-                    "Authorization": "Bearer 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",
+                    "Authorization": "Bearer API-KEY",
                 },
                 data: {
                     prompt: this.sentence,

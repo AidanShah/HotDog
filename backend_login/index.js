@@ -24,10 +24,19 @@ app.get("/", (req, res) => {
   res.json({ info: "Its Login Time BABYYYYYY" });
 });
 
+
+
 app.get("/login/:username/:password", db.login)
 app.post("/signup/:username/:password", db.signup)
 app.put("/change/:username/:password/:newpassword", db.changePassword)
-app.put("/home/:username/:newTokens", db.changeTokens)
+
+
+// this one 
+// hit the url /home/:username/:newTokens in the front end -> Button called Add tokens -> with the same open AI
+// define "get" in front end
+// EDIT
+app.get("/home/:username/:newTokens", db.changeTokens)
+
 app.put("/changeLogin/:username/:password", db.changeCurrentLogin)
 app.get("/getLogin", db.getCurrentLogin)
 

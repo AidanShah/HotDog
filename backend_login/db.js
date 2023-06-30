@@ -100,6 +100,22 @@ const login = (request, response) => {
     });
   };
 
+  // const getTokens = (request, response) => {
+  //   const username = request.params.username;
+  //   const newTokens = request.params.newTokens;
+  //   const query = 'Select tokens=? FROM hotdog WHERE email = ?'
+
+  //   db.get(query, [newTokens, username], (error, result) =>{
+
+  //     if (error){
+  //       console.error(error.message);
+  //       response.status(400).json({ error: error.message });
+  //       return;
+  //     }
+  //   });
+  // }
+
+
   const changeCurrentLogin = (request, response) => {
     const username = request.params.username
     const password = request.params.password
